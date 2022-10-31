@@ -1,6 +1,10 @@
 import CardItem from '../../components/card/card-item';
 
-function MainPage (): JSX.Element {
+type MainPageProps = {
+    cardsCount: number;
+};
+
+function MainPage ({cardsCount}: MainPageProps): JSX.Element {
     return (
         <div className="page page--gray page--main">
             <header className="header">
