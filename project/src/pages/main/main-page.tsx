@@ -1,4 +1,4 @@
-import CardItem from "../../components/card/card-item";
+import CardItem from '../../components/card/card-item';
 
 type MainPageProps = {
   cardsCount: number;
