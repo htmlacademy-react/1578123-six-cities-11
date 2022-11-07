@@ -1,4 +1,5 @@
 import CardItem from '../../components/card/card-item';
+import { Helmet } from 'react-helmet-async';
 
 type MainPageProps = {
   cardsCount: number;
@@ -7,6 +8,11 @@ type MainPageProps = {
 function MainPage({ cardsCount }: MainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
+      <Helmet>
+        <title>
+          Six cities
+        </title>
+      </Helmet>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">

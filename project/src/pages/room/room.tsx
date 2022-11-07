@@ -1,6 +1,13 @@
+import { Helmet } from 'react-helmet-async';
+
 function Room(): JSX.Element {
   return (
     <div className="page">
+      <Helmet>
+        <title>
+          Six cities|Property
+        </title>
+      </Helmet>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">

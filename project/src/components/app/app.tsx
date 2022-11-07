@@ -1,4 +1,5 @@
 import MainPage from '../../pages/main/main-page';
+import { HelmetProvider } from 'react-helmet-async';
 
 type AppScreenProps = {
   cardsCount: number;
@@ -6,7 +7,10 @@ type AppScreenProps = {
 
 function App({cardsCount}: AppScreenProps): JSX.Element {
   return (
-    <MainPage cardsCount={cardsCount} />
+    <HelmetProvider>
+      <MainPage cardsCount={cardsCount} />
+    </HelmetProvider>
+    
   );
 }
 
