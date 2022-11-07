@@ -1,19 +1,22 @@
+import { Helmet } from 'react-helmet-async';
+
+import Logo from '../../components/logo/logo';
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
+
 function Favorites(): JSX.Element {
   return (
     <div className="page">
+      <Helmet>
+        <title>
+          Six cities|Favorites
+        </title>
+      </Helmet>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link" href="main.html">
-                <img
-                  className="header__logo"
-                  src="img/logo.svg"
-                  alt="6 cities logo"
-                  width="81"
-                  height="41"
-                />
-              </a>
+              <Logo />
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
@@ -215,7 +218,7 @@ function Favorites(): JSX.Element {
         </div>
       </main>
       <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
+        <Link to={AppRoute.Root} className="footer__logo-link">
           <img
             className="footer__logo"
             src="img/logo.svg"
@@ -223,7 +226,7 @@ function Favorites(): JSX.Element {
             width="64"
             height="33"
           />
-        </a>
+        </Link>
       </footer>
     </div>
   );
