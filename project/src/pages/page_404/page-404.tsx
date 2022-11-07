@@ -1,8 +1,10 @@
 import { Helmet } from "react-helmet-async";
 import { Fragment } from "react";
+import { Link } from "react-router-dom";
 
 import Logo from "../../components/logo/logo";
 import styles from "./page-404.module.css";
+import { AppRoute } from "../../const";
 
 export default function PageNotFound(): JSX.Element {
   return (
@@ -21,7 +23,9 @@ export default function PageNotFound(): JSX.Element {
       </header>
       <section className={styles.container}>
         <h1 className={styles.error}>404 - Page not found</h1>
-        {/* Link */}
+        <Link to={AppRoute.Root} className={styles.back}>
+          To Main page
+        </Link>
       </section>
     </Fragment>
   );

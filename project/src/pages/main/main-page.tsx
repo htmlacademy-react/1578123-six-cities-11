@@ -1,6 +1,6 @@
-import CardItem from '../../components/card/card-item';
-import { Helmet } from 'react-helmet-async';
-import Logo from '../../components/logo/logo';
+import CardItem from "../../components/card/card-item";
+import { Helmet } from "react-helmet-async";
+import Logo from "../../components/logo/logo";
 
 type MainPageProps = {
   cardsCount: number;
@@ -10,9 +10,7 @@ function MainPage({ cardsCount }: MainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <Helmet>
-        <title>
-          Six cities
-        </title>
+        <title>Six cities</title>
       </Helmet>
       <header className="header">
         <div className="container">

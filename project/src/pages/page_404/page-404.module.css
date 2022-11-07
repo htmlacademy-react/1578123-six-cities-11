@@ -1,11 +1,15 @@
 .container {
-
+    margin: 10%;
 }
 
 .error {
-
+    border-left-style: solid;
+    border-width: 5px;
+    border-color: #366CB6;
+    margin-bottom: 5%;
+    padding: 15px;
 }
 
 .back {
-    
+    color: #366CB6;
 }
