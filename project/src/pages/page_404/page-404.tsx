@@ -1,10 +1,10 @@
-import { Helmet } from "react-helmet-async";
-import { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
+import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
-import Logo from "../../components/logo/logo";
-import styles from "./page-404.module.css";
-import { AppRoute } from "../../const";
+import Logo from '../../components/logo/logo';
+import styles from './page-404.module.css';
+import { AppRoute } from '../../const';
 
 export default function PageNotFound(): JSX.Element {
   return (
