@@ -1,7 +1,14 @@
 import { Helmet } from 'react-helmet-async';
 import Logo from '../../components/logo/logo';
+import { Offer } from '../../types/offers';
+import { Review } from '../../types/reviews';
 
-function Room(): JSX.Element {
+type RoomProps = {
+  offers: Offer[];
+  reviews: Review[];
+};
+
+function Room({ offers, reviews }:RoomProps): JSX.Element {
   return (
     <div className="page">
       <Helmet>

@@ -1,16 +1,34 @@
 import { AppRoute } from '../../const';
 import { Link } from 'react-router-dom';
 
-export default function Logo(): JSX.Element {
+type LogoProps = {
+  type: 'header' | 'footer'
+};
+
+const sizes = {
+  header: {
+    width: 81,
+    height: 41
+  },
+  footer: {
+    width: 64,
+    height: 33
+  }
+};
+
+function Logo({ type }: LogoProps): JSX.Element {
+  const { width, height } = sizes[type];
   return (
-    <Link to={AppRoute.Root} className="hader__logo-link">
+    <Link to={AppRoute.Root} className={`${type}__logo-link`}>
       <img
-        className="header__logo"
+        className={`${type}__logo`}
         src="img/logo.svg"
         alt="6 cities logo"
-        width="81"
-        height="41"
+        width={width}
+        height={height}
       />
     </Link>
   );
 }
+
+export default Logo;

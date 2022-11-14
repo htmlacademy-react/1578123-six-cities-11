@@ -16,7 +16,7 @@ export default function PageNotFound(): JSX.Element {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <Logo />
+              <Logo type='header' />
             </div>
           </div>
         </div>

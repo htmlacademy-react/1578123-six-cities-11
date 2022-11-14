@@ -4,7 +4,13 @@ import Logo from '../../components/logo/logo';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 
-function Favorites(): JSX.Element {
+import { Offer } from '../../types/offers';
+
+type FavoriteProps = {
+  offers: Offer[]
+};
+
+function Favorites({ offers }:FavoriteProps): JSX.Element {
   return (
     <div className="page">
       <Helmet>
