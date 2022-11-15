@@ -1,15 +1,14 @@
-import Rating from "../rating/rating";
-import { RatingTitles } from "../../const";
+import Rating from '../rating/rating';
+import { RatingTitles } from '../../const';
 
 import { ChangeEvent, useState } from "react";
 
 function ReviewForm(): JSX.Element {
   const [formData, setFormData] = useState({ rating: "", review: "" });
 
-  const handleFieldChange = (
-    evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleFieldChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = evt.target;
+    
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
@@ -22,14 +21,16 @@ function ReviewForm(): JSX.Element {
         Your review
       </label>
       <div className="reviews__rating-form form__rating">
-        {RatingTitles.map(({ value, title }) => {
+
+        {RatingTitles.map(({ value, title }) => (
           <Rating
             key={value}
             handleFieldChange={handleFieldChange}
             rating={value}
             title={title}
-          />;
-        })}
+          />
+        ))}
+
       </div>
       <textarea
         className="reviews__textarea form__textarea"

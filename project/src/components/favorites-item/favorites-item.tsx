@@ -1,43 +1,40 @@
-import { generatePath, Link } from 'react-router-dom';
-import { AppRoute, MAX_RATING } from '../../const';
-import { Offer } from '../../types/offers';
-import BookmarksButton from '../bookmarks-button/bookmarks-button';
+import { generatePath, Link } from "react-router-dom";
 
-type CardItemProps = {
+import { AppRoute, MAX_RATING } from "../../const";
+import { Offer } from "../../types/offers";
+import BookmarksButton from "../bookmarks-button/bookmarks-button";
+
+type FavoritesItemProps = {
   offer: Offer;
-  onMouseEnter: (offerId: number | null) => void;
 };
 
-function CardItem({ offer, onMouseEnter }: CardItemProps): JSX.Element {
+function FavoritesItem({ offer }: FavoritesItemProps): JSX.Element {
   const { id, title, type, price, rating, previewImg, isFavorite, isPremium } =
     offer;
 
   const accomodationType = type.charAt(0).toUpperCase() + type.slice(1),
-    ratingPercentage = (rating * 100) / MAX_RATING;
+        ratingPercentage = (rating * 100) / MAX_RATING;
 
   return (
-    <article
-      className="cities__card place-card"
-      onMouseEnter={() => onMouseEnter(id)}
-      onMouseLeave={() => onMouseEnter(null)}
-    >
+    <article className="favorites__card place-card">
       {isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+
+      <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={generatePath(AppRoute.Offer, { id: String(id) })}>
           <img
             className="place-card__image"
             src={previewImg}
-            width="260"
-            height="200"
+            width="150"
+            height="110"
             alt="Place image"
           />
         </Link>
       </div>
-      <div className="place-card__info">
+      <div className="favorites__card-info place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
@@ -45,7 +42,7 @@ function CardItem({ offer, onMouseEnter }: CardItemProps): JSX.Element {
           </div>
 
           <BookmarksButton
-            isActive={isFavorite ? "__bookmark-button--active" : false}
+            isActive="__bookmark-button--active"
             size="small"
             page="place-card"
           />
@@ -67,4 +64,4 @@ function CardItem({ offer, onMouseEnter }: CardItemProps): JSX.Element {
   );
 }
 
-export default CardItem;
+export default FavoritesItem;

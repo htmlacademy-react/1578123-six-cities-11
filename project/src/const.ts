@@ -12,6 +12,8 @@ export enum AuthorizationStatus {
     Unknown = 'UNKNOWN'
 }
 
+export const MAX_RATING = 5;
+
 export const RatingTitles = [
     {value: '5', title: 'perfect'},
     {value: '4', title: 'good'},
