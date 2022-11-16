@@ -1,18 +1,15 @@
 import Rating from '../rating/rating';
 import { RatingTitles } from '../../const';
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from 'react';
 
 function ReviewForm(): JSX.Element {
-  const [formData, setFormData] = useState({ rating: "", review: "" });
+  const [formData, setFormData] = useState({ rating: '', review: '' });
 
   const handleFieldChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = evt.target;
-    
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+
+    setFormData((prevFormData) => ( {...prevFormData, [name]: value} ));
   };
 
   return (
@@ -39,7 +36,8 @@ function ReviewForm(): JSX.Element {
         placeholder="Tell how was your stay, what you like and what can be improved"
         onChange={handleFieldChange}
         value={formData.review}
-      ></textarea>
+      >
+      </textarea>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set{' '}

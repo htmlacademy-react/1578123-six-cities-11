@@ -5,7 +5,7 @@ type HostProps = {
   description: string;
 };
 
-function Host({ host, description }: HostProps): JSX.Element {
+function HostInformation({ host, description }: HostProps): JSX.Element {
   const { name, isPro, avatarUrl } = host;
 
   return (
@@ -22,7 +22,7 @@ function Host({ host, description }: HostProps): JSX.Element {
           />
         </div>
         <span className="property__user-name">{name}</span>
-        <span className="property__user-status">{isPro ? "Pro" : ""}</span>
+        <span className="property__user-status">{isPro ? 'Pro' : ''}</span>
       </div>
       <div className="property__description">
         <p className="property__text">{description}</p>
@@ -31,4 +31,4 @@ function Host({ host, description }: HostProps): JSX.Element {
   );
 }
 
-export default Host;
+export default HostInformation;

@@ -1,16 +1,17 @@
-import { Helmet } from "react-helmet-async";
-import { Link, Navigate, useParams } from "react-router-dom";
-import BookmarksButton from "../../components/bookmarks-button/bookmarks-button";
-import Host from "../../components/host/host";
-import Layout from "../../components/layout/layout";
+import { Helmet } from 'react-helmet-async';
+import { Link, Navigate, useParams } from 'react-router-dom';
 
-import Logo from "../../components/logo/logo";
-import Map from "../../components/map/map";
-import PropertyGallery from "../../components/property-gallery/property-gallery";
-import Reviews from "../../components/reviews/reviews";
-import { AppRoute, MAX_RATING } from "../../const";
-import { Offer } from "../../types/offers";
-import { Review } from "../../types/reviews";
+import { AppRoute, MAX_RATING } from '../../const';
+import { Offer } from '../../types/offers';
+import { Review } from '../../types/reviews';
+
+import BookmarksButton from '../../components/bookmarks-button/bookmarks-button';
+import HostInformation from '../../components/host/host';
+import Layout from '../../components/layout/layout';
+import Map from '../../components/map/map';
+import PropertyGallery from '../../components/property-gallery/property-gallery';
+import Reviews from '../../components/reviews/reviews';
+
 
 type RoomProps = {
   offers: Offer[];
@@ -39,8 +40,8 @@ function Room({ offers, reviews }: RoomProps): JSX.Element {
       isPremium,
     } = property;
 
-    const accomodationType = type.charAt(0).toUpperCase() + type.slice(1),
-          ratingPercentage = (rating * 100) / MAX_RATING;
+    const accomodationType = type.charAt(0).toUpperCase() + type.slice(1);
+    const ratingPercentage = (rating * 100) / MAX_RATING;
 
     return (
       <div className="page">
@@ -63,9 +64,7 @@ function Room({ offers, reviews }: RoomProps): JSX.Element {
                   <div className="property__name-wrapper">
                     <h1 className="property__name">{title}</h1>
                     <BookmarksButton
-                      isActive={
-                        isFavorite ? "__bookmark-button--active" : false
-                      }
+                      isActive={isFavorite ? '__bookmark-button--active' : false}
                       size="big"
                       page="property"
                     />
@@ -106,7 +105,7 @@ function Room({ offers, reviews }: RoomProps): JSX.Element {
                       ))}
                     </ul>
                   </div>
-                  <Host host={host} description={description} />
+                  <HostInformation host={host} description={description} />
                   <Reviews reviews={reviews} />
                 </div>
               </div>
@@ -140,16 +139,14 @@ function Room({ offers, reviews }: RoomProps): JSX.Element {
                           </span>
                         </div>
                         <BookmarksButton
-                          isActive={
-                            isFavorite ? "__bookmark-button--active" : false
-                          }
+                          isActive={isFavorite ? '__bookmark-button--active' : false}
                           page="place-card"
                           size="small"
                         />
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={{ width: "80%" }}></span>
+                          <span style={{ width: '80%' }}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -181,16 +178,14 @@ function Room({ offers, reviews }: RoomProps): JSX.Element {
                           </span>
                         </div>
                         <BookmarksButton
-                          isActive={
-                            isFavorite ? "__bookmark-button--active" : false
-                          }
+                          isActive={isFavorite ? '__bookmark-button--active' : false}
                           size="small"
                           page="place-card"
                         />
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={{ width: "80%" }}></span>
+                          <span style={{ width: '80%' }}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>
@@ -225,16 +220,14 @@ function Room({ offers, reviews }: RoomProps): JSX.Element {
                           </span>
                         </div>
                         <BookmarksButton
-                          isActive={
-                            isFavorite ? "__bookmark-button--active" : false
-                          }
+                          isActive={isFavorite ? '__bookmark-button--active' : false}
                           size="small"
                           page="place-card"
                         />
                       </div>
                       <div className="place-card__rating rating">
                         <div className="place-card__stars rating__stars">
-                          <span style={{ width: "100%" }}></span>
+                          <span style={{ width: '100%' }}></span>
                           <span className="visually-hidden">Rating</span>
                         </div>
                       </div>

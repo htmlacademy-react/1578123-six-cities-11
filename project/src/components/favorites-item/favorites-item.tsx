@@ -1,19 +1,19 @@
-import { generatePath, Link } from "react-router-dom";
+import { generatePath, Link } from 'react-router-dom';
 
-import { AppRoute, MAX_RATING } from "../../const";
-import { Offer } from "../../types/offers";
-import BookmarksButton from "../bookmarks-button/bookmarks-button";
+import { AppRoute, MAX_RATING } from '../../const';
+import { Offer } from '../../types/offers';
+import BookmarksButton from '../bookmarks-button/bookmarks-button';
 
 type FavoritesItemProps = {
   offer: Offer;
 };
 
 function FavoritesItem({ offer }: FavoritesItemProps): JSX.Element {
-  const { id, title, type, price, rating, previewImg, isFavorite, isPremium } =
+  const { id, title, type, price, rating, previewImg, isPremium } =
     offer;
 
-  const accomodationType = type.charAt(0).toUpperCase() + type.slice(1),
-        ratingPercentage = (rating * 100) / MAX_RATING;
+  const accomodationType = type.charAt(0).toUpperCase() + type.slice(1);
+  const ratingPercentage = (rating * 100) / MAX_RATING;
 
   return (
     <article className="favorites__card place-card">

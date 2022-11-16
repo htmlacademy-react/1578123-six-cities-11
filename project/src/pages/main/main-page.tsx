@@ -1,12 +1,12 @@
-import { Helmet } from "react-helmet-async";
+import { Helmet } from 'react-helmet-async';
 
-import { Offer } from "../../types/offers";
+import { Offer } from '../../types/offers';
 
-import Layout from "../../components/layout/layout";
-import SortingForm from "../../components/sorting-form/sorting-form";
-import CardsList from "../../components/cards-list/cards-list";
-import Map from "../../components/map/map";
-import CitiesMenu from "../../components/cities-menu/cities-menu";
+import Layout from '../../components/layout/layout';
+import SortingForm from '../../components/sorting-form/sorting-form';
+import CardsList from '../../components/cards-list/cards-list';
+import Map from '../../components/map/map';
+import CitiesMenu from '../../components/cities-menu/cities-menu';
 
 type MainPageProps = {
   offers: Offer[];

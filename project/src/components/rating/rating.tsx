@@ -1,4 +1,4 @@
-import React, { Fragment, ChangeEvent } from "react";
+import React, { Fragment, ChangeEvent } from 'react';
 
 type RatingProps = {
   handleFieldChange: (

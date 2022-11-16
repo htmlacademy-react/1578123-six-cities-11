@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
-import { Offer } from "../../types/offers";
-import FavoritesItem from "../favorites-item/favorites-item";
+import { Link } from 'react-router-dom';
+
+import { Offer } from '../../types/offers';
+import FavoritesItem from '../favorites-item/favorites-item';
 
 type FavoritesListProps = {
   offers: Offer[];

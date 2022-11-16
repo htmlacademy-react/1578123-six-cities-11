@@ -45,7 +45,7 @@ function CardItem({ offer, onMouseEnter }: CardItemProps): JSX.Element {
           </div>
 
           <BookmarksButton
-            isActive={isFavorite ? "__bookmark-button--active" : false}
+            isActive={isFavorite ? '__bookmark-button--active' : false}
             size="small"
             page="place-card"
           />

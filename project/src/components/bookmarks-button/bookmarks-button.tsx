@@ -1,7 +1,7 @@
 type BookmarksButtonProps = {
-  isActive: false | "__bookmark-button--active";
-  size: "small" | "big";
-  page: "place-card" | "property";
+  isActive: false | '__bookmark-button--active';
+  size: 'small' | 'big';
+  page: 'place-card' | 'property';
 };
 
 const sizes = {

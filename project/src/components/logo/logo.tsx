@@ -2,7 +2,7 @@ import { AppRoute } from '../../const';
 import { Link } from 'react-router-dom';
 
 type LogoProps = {
-  type: 'header' | 'footer'
+  type: 'header' | 'footer';
 };
 
 const sizes = {

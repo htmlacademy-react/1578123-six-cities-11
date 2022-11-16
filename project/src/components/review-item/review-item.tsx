@@ -1,13 +1,13 @@
-import { Review } from "../../types/reviews";
-import dayjs from "dayjs";
+import { Review } from '../../types/reviews';
+import dayjs from 'dayjs';
 
 type ReviewItemProps = {
   review: Review;
 };
 
 function ReviewItem({ review }: ReviewItemProps): JSX.Element {
-  const { id, rating, comment, author, date } = review;
-  const commentDate = dayjs(date).format("MMMM YYYY");
+  const { id, comment, author, date } = review;
+  const commentDate = dayjs(date).format('MMMM YYYY');
 
   return (
     <li className="reviews__item" key={id}>
