@@ -11,7 +11,7 @@ function Login(): JSX.Element {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <Logo />
+              <Logo type='footer' />
             </div>
           </div>
         </div>
