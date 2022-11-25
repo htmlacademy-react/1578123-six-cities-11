@@ -12,6 +12,11 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
+export enum UrlMarker {
+  DefaultMarker = '/img/pin.svg',
+  CurrentMarker = '/img/pin-active.svg'
+}
+
 export const MAX_RATING = 5;
 
 export const RatingTitles = [
@@ -21,3 +26,4 @@ export const RatingTitles = [
   { value: '2', title: 'badly' },
   { value: '1', title: 'terribly' },
 ];
+

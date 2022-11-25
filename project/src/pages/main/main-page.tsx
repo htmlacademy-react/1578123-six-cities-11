@@ -13,6 +13,8 @@ type MainPageProps = {
 };
 
 function MainPage({ offers }: MainPageProps): JSX.Element {
+  const { location } = offers[0].city;
+
   return (
     <div className="page page--gray page--main">
       <Helmet>
@@ -32,7 +34,7 @@ function MainPage({ offers }: MainPageProps): JSX.Element {
                 <CardsList offers={offers} />
               </section>
               <div className="cities__right-section">
-                <Map className="cities__map" />
+                <Map className="cities__map" offers={offers} city={location} selectedOffer={undefined} />
               </div>
             </div>
           </div>
