@@ -26,7 +26,7 @@ export const offers: Offer[] = [
         longitude: 4.895168,
         zoom: 10,
       },
-      name: 'Amsterdam',
+      name: 'Amsterdam'
     },
     location: {
       latitude: 52.35514938496378,
@@ -57,15 +57,15 @@ export const offers: Offer[] = [
     previewImg: 'img/apartment-small-04.jpg',
     city: {
       location: {
-        latitude: 51.892584,
-        longitude: 5.19351,
-        zoom: 7,
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10,
       },
-      name: 'Hamburg',
+      name: 'Amsterdam'
     },
     location: {
-      latitude: 51.35514619361378,
-      longitude: 5.673871953199948,
+      latitude: 52.3609553943508,
+      longitude: 4.85309666406198,
       zoom: 10,
     },
     isFavorite: false,
@@ -92,15 +92,15 @@ export const offers: Offer[] = [
     previewImg: 'img/apartment-small-04.jpg',
     city: {
       location: {
-        latitude: 48.370216,
-        longitude: 3.895168,
-        zoom: 6,
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10,
       },
-      name: 'Paris',
+      name: 'Amsterdam'
     },
     location: {
-      latitude: 48.35514938496378,
-      longitude: 3.673877537499948,
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198,
       zoom: 9,
     },
     isFavorite: true,
@@ -134,15 +134,15 @@ export const offers: Offer[] = [
     previewImg: 'img/apartment-small-03.jpg',
     city: {
       location: {
-        latitude: 46.370216,
-        longitude: 6.895168,
-        zoom: 7,
+        latitude: 52.370216,
+        longitude: 4.895168,
+        zoom: 10,
       },
-      name: 'Cologne',
+      name: 'Amsterdam'
     },
     location: {
-      latitude: 46.35514938496378,
-      longitude: 6.673877537499948,
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
       zoom: 5,
     },
     isFavorite: false,

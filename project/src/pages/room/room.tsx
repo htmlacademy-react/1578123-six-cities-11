@@ -35,6 +35,7 @@ function Room({ offers, reviews }: RoomProps): JSX.Element {
       goods,
       bedrooms,
       host,
+      city,
       description,
       isFavorite,
       isPremium,
@@ -109,7 +110,7 @@ function Room({ offers, reviews }: RoomProps): JSX.Element {
                   <Reviews reviews={reviews} />
                 </div>
               </div>
-              <Map className="property__map" />
+              <Map className="property__map" offers={offers} city={city.location} selectedOffer={property.id} />
             </section>
 
             <div className="container">
