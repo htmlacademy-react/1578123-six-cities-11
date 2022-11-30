@@ -23,20 +23,24 @@ function App({ offers, reviews }: AppScreenProps): JSX.Element {
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
-          <Route
-            path={AppRoute.Root}
-            element={<MainPage offers={offers} />}
-          />
-          <Route path={AppRoute.Login} element={<Login />} />
-          <Route
-            path={AppRoute.Favorites}
-            element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-                <Favorites offers={offers}/>
-              </PrivateRoute>
-            }
-          />
-          <Route path={AppRoute.Offer} element={<Room offers={offers} reviews={reviews} />} />
+          <Route path={AppRoute.Root}>
+            <Route index element={<MainPage offers={offers} />} />
+            <Route
+              path={AppRoute.Login}
+              element={<Login />}
+            />
+            <Route
+              path={AppRoute.Favorites}
+              element={
+                <PrivateRoute
+                  authorizationStatus={AuthorizationStatus.Auth}
+                >
+                  <Favorites offers={offers}/>
+                </PrivateRoute>
+              }
+            />
+            <Route path={AppRoute.Offer} element={<Room offers={offers} reviews={reviews}/>} />
+          </Route>
           <Route path={AppRoute.NotFound} element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>

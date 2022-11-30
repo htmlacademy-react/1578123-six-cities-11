@@ -23,7 +23,7 @@ function FavoritesItem({ offer }: FavoritesItemProps): JSX.Element {
       )}
 
       <div className="favorites__image-wrapper place-card__image-wrapper">
-        <Link to={generatePath(AppRoute.Offer, { id: String(id) })}>
+        <Link to={`${AppRoute.Root}${generatePath(AppRoute.Offer, { id: String(id)})}`}>
           <img
             className="place-card__image"
             src={previewImg}
@@ -53,7 +53,7 @@ function FavoritesItem({ offer }: FavoritesItemProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`${AppRoute.Root}${ generatePath(AppRoute.Offer, { id: String(id) }) }`}>
+          <Link to={`${AppRoute.Root}${generatePath(AppRoute.Offer, { id: String(id)})}`}>
             {title}
           </Link>
         </h2>

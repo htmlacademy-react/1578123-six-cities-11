@@ -23,7 +23,7 @@ function Room({ offers, reviews }: RoomProps): JSX.Element {
   const params = useParams();
   const { id } = params;
 
-  const property = offers.find((offer) => offer.id === Number(id));
+  const property = offers.find((currentOffer) => currentOffer.id === Number(id));
 
   if (property) {
     const {

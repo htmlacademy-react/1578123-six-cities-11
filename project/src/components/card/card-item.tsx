@@ -50,7 +50,7 @@ function CardItem({ offer, onOfferMouseEnter, place }: CardItemProps): JSX.Eleme
         </div>
       )}
       <div className={`${className}__image-wrapper place-card__image-wrapper`}>
-        <Link to={`${AppRoute.Root}${ generatePath(AppRoute.Offer, { id: String(id) }) }`}>
+        <Link to={generatePath(AppRoute.Offer, { id: String(id)})}>
           <img
             className="place-card__image"
             src={previewImg}
@@ -80,7 +80,7 @@ function CardItem({ offer, onOfferMouseEnter, place }: CardItemProps): JSX.Eleme
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`${AppRoute.Root}${ generatePath(AppRoute.Offer, { id: String(id) }) }`}>
+          <Link to={generatePath(AppRoute.Offer, { id: String(id)})}>
             {title}
           </Link>
         </h2>
