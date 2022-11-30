@@ -1,26 +1,28 @@
 import CardItem from '../card/card-item';
 import { Offer } from '../../types/offers';
 
-import { useState } from 'react';
-
 type CardsListProps = {
   offers: Offer[];
+  place: 'city' | 'near';
+  onOfferMouseEnter?: (offerId: number | null) => void;
 };
 
-function CardsList({ offers }: CardsListProps): JSX.Element {
-  const [, setActiveOffer] = useState<number | null>(null);
+const classes = {
+  city: 'cities__places-list',
+  near: 'near-places__list'
+};
 
-  const handleOfferMouseEnter = (offerId: number | null) => {
-    setActiveOffer(offerId);
-  };
+function CardsList({ offers, place, onOfferMouseEnter }: CardsListProps): JSX.Element {
+  const className = classes[place];
 
   return (
-    <div className="cities__places-list">
+    <div className={className}>
       {offers.map((offer) => (
         <CardItem
           key={offer.id}
           offer={offer}
-          onMouseEnter={handleOfferMouseEnter}
+          onOfferMouseEnter={onOfferMouseEnter}
+          place={place}
         />
       ))}
     </div>

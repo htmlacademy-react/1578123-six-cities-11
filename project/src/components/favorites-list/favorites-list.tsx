@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { Offer } from '../../types/offers';
-import FavoritesItem from '../favorites-item/favorites-item';
+import CardItem from '../card/card-item';
 
 type FavoritesListProps = {
   offers: Offer[];
@@ -38,7 +38,7 @@ function FavoritesList({ offers }: FavoritesListProps): JSX.Element {
           <div className="favorites__places">
             {offersByCity[city].map(
               (offer) =>
-                offer.city.name === city && <FavoritesItem offer={offer} />
+                offer.city.name === city && <CardItem offer={offer} place='favorite'/>
             )}
           </div>
         </li>
