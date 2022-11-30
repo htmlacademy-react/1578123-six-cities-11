@@ -9,8 +9,7 @@ type FavoritesItemProps = {
 };
 
 function FavoritesItem({ offer }: FavoritesItemProps): JSX.Element {
-  const { id, title, type, price, rating, previewImg, isPremium } =
-    offer;
+  const { id, title, type, price, rating, previewImg, isPremium } = offer;
 
   const accomodationType = type.charAt(0).toUpperCase() + type.slice(1);
   const ratingPercentage = (rating * 100) / MAX_RATING;
