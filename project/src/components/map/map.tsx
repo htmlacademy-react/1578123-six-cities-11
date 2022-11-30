@@ -11,7 +11,7 @@ type MapProps = {
   className: string;
   offers: Offer[];
   city: Location;
-  selectedOffer: number | undefined;
+  selectedOffer: number | null;
 };
 
 const defaultCustomIcon = new Icon({
@@ -53,10 +53,8 @@ function Map({ className, offers, city, selectedOffer }: MapProps): JSX.Element 
   return (
     <section
       className={`${className} map`}
-      style={{ height: '100%' }}
       ref={mapRef}
-    >
-    </section>
+    />
   );
 }
 

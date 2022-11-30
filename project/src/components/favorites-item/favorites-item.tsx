@@ -9,8 +9,7 @@ type FavoritesItemProps = {
 };
 
 function FavoritesItem({ offer }: FavoritesItemProps): JSX.Element {
-  const { id, title, type, price, rating, previewImg, isPremium } =
-    offer;
+  const { id, title, type, price, rating, previewImg, isPremium } = offer;
 
   const accomodationType = type.charAt(0).toUpperCase() + type.slice(1);
   const ratingPercentage = (rating * 100) / MAX_RATING;
@@ -24,7 +23,7 @@ function FavoritesItem({ offer }: FavoritesItemProps): JSX.Element {
       )}
 
       <div className="favorites__image-wrapper place-card__image-wrapper">
-        <Link to={generatePath(AppRoute.Offer, { id: String(id) })}>
+        <Link to={`${AppRoute.Root}${generatePath(AppRoute.Offer, { id: String(id)})}`}>
           <img
             className="place-card__image"
             src={previewImg}
@@ -54,7 +53,7 @@ function FavoritesItem({ offer }: FavoritesItemProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={generatePath(AppRoute.Offer, { id: String(id) })}>
+          <Link to={`${AppRoute.Root}${generatePath(AppRoute.Offer, { id: String(id)})}`}>
             {title}
           </Link>
         </h2>
