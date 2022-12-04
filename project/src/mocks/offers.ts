@@ -148,4 +148,46 @@ export const offers: Offer[] = [
     isFavorite: false,
     isPremium: true,
   },
+  {
+    id: 10,
+    title: 'Discount apartment',
+    type: 'apartment',
+    description: 'Amazing place in the center of Paris',
+    price: 180,
+    rating: 4.7,
+    bedrooms: 1,
+    goods: [
+      'Heating',
+      'Coffee machine',
+      'Baby seat',
+      'Towels'
+    ],
+    images: [
+      'img/apartment-01.jpg',
+      'img/apartment-02.jpg'
+    ],
+    host: {
+      avatarUrl: 'img/avatar-angelina.jpg',
+      id: 3,
+      isPro: true,
+      name: 'Angelina',
+    },
+    maxAdults: 4,
+    previewImg: 'img/apartment-small-03.jpg',
+    city: {
+      location: {
+        latitude: 48.8534100,
+        longitude: 2.3488000,
+        zoom: 10,
+      },
+      name: 'Paris'
+    },
+    location: {
+      latitude: 48.8534100,
+      longitude: 2.3488000,
+      zoom: 8
+    },
+    isFavorite: true,
+    isPremium: false
+  }
 ];
