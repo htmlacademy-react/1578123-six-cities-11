@@ -3,7 +3,7 @@ import { AppRoute, MAX_RATING } from '../../const';
 import { Offer } from '../../types/offers';
 import BookmarksButton from '../bookmarks-button/bookmarks-button';
 
-import cn from 'classnames';
+import classsNames from 'classnames';
 
 type CardItemProps = {
   offer: Offer;
@@ -33,7 +33,7 @@ function CardItem({ offer, onOfferMouseEnter, place }: CardItemProps): JSX.Eleme
   const { className, imgWidth, imgHeight } = classes[place];
   const { id, title, type, price, rating, previewImg, isFavorite, isPremium } = offer;
 
-  const infoClassName = cn('place-card__info', { 'favorites__card-info': place === 'favorite' });
+  const infoClassName = classsNames('place-card__info', { 'favorites__card-info': place === 'favorite' });
 
   const accomodationType = type.charAt(0).toUpperCase() + type.slice(1),
     ratingPercentage = (rating * 100) / MAX_RATING;

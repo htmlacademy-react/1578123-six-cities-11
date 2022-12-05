@@ -1,4 +1,4 @@
-import { Icon, Marker } from 'leaflet';
+import { Icon, LayerGroup, Marker } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { useRef, useEffect } from 'react';
@@ -31,6 +31,12 @@ function Map({ className, offers, city, selectedOffer }: MapProps): JSX.Element 
   const map = useMap(mapRef, city);
 
   useEffect(() => {
+    map?.setView([city.latitude, city.longitude], city.zoom);
+  }, [city, map]);
+
+  const layer = new LayerGroup();
+
+  useEffect(() => {
     if (map) {
       offers.forEach((offer) => {
         const { location } = offer;
@@ -44,11 +50,17 @@ function Map({ className, offers, city, selectedOffer }: MapProps): JSX.Element 
             selectedOffer && offer.id === selectedOffer
               ? currentCustomIcon
               : defaultCustomIcon
-          )
-          .addTo(map);
+          );
+
+        layer.addLayer(marker);
       });
+      layer.addTo(map);
     }
-  }, [map, offers, selectedOffer]);
+
+    return () => {
+      layer.clearLayers();
+    };
+  });
 
   return (
     <section

@@ -27,3 +27,7 @@ export const RatingTitles = [
   { value: '1', title: 'terribly' },
 ];
 
+export const CITIES = ['Paris', 'Cologne', 'Bruxelles', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
+
+export const START_CITY = 'Paris';
+

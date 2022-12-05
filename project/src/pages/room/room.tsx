@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import { Navigate, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import { AppRoute, MAX_RATING } from '../../const';
 import { Offer } from '../../types/offers';
@@ -13,7 +14,6 @@ import Map from '../../components/map/map';
 import PropertyGallery from '../../components/property-gallery/property-gallery';
 import Reviews from '../../components/reviews/reviews';
 
-
 type RoomProps = {
   offers: Offer[];
   reviews: Review[];
@@ -24,6 +24,8 @@ function Room({ offers, reviews }: RoomProps): JSX.Element {
   const { id } = params;
 
   const property = offers.find((currentOffer) => currentOffer.id === Number(id));
+
+  useEffect(() => window.scrollTo(0, 0), [id]);
 
   if (property) {
     const {
