@@ -31,3 +31,11 @@ export const CITIES = ['Paris', 'Cologne', 'Bruxelles', 'Amsterdam', 'Hamburg', 
 
 export const START_CITY = 'Paris';
 
+export enum SortingType {
+  Default = 'Popular',
+  Ascending = 'Price: low to high',
+  Descending = 'Price: high to low',
+  TopRated = 'Top rated first'
+}
+
+
