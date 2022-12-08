@@ -1,12 +1,25 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { SortingType, START_CITY } from '../const';
-import { offers } from '../mocks/offers';
-import { changeCity, changeSortingType } from './actions';
+import { Offer } from '../types/offers';
+import { Review } from '../types/reviews';
+import { changeCity, changeSortingType, loadComments, loadOffers, setError, setOffersDataLoadingStatus } from './actions';
 
-const initialState = {
+type InitialState = {
+  city: string;
+  offers: Offer[];
+  comments: Review[];
+  sortingType: SortingType;
+  error: string | null;
+  isOffersDataLoading: boolean;
+}
+
+const initialState: InitialState = {
   city: START_CITY,
-  offers,
-  sortingType: SortingType.Default
+  offers: [],
+  comments: [],
+  sortingType: SortingType.Default,
+  error: null,
+  isOffersDataLoading: false
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -18,6 +31,18 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(changeSortingType, (state, action) => {
       const { sortingType } = action.payload;
       state.sortingType = sortingType;
+    })
+    .addCase(loadOffers, (state, action) => {
+      state.offers = action.payload;
+    })
+    .addCase(setOffersDataLoadingStatus, (state, action) => {
+      state.isOffersDataLoading = action.payload;
+    })
+    .addCase(loadComments, (state, action) => {
+      state.comments = action.payload;
+    })
+    .addCase(setError, (state, action) => {
+      state.error = action.payload;
     });
 });
 

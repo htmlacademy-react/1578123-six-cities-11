@@ -1,0 +1,10 @@
+.wrapper {
+  margin-top: 200px;
+}
+
+.loading {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: #366cb6;
+}
