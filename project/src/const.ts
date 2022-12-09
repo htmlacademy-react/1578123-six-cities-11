@@ -38,4 +38,13 @@ export enum SortingType {
   TopRated = 'Top rated first'
 }
 
+export enum APIRoute {
+  Login = '/login',
+  Logout = '/logout',
+  Comments = '/comments',
+  Hotels = '/hotels',
+  Nearby = '/nearby',
+  Favorites = '/favorite'
+}
 
+export const TIMEOUT_ERROR = 2000;

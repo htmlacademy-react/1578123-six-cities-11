@@ -3,7 +3,6 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import { AppRoute, MAX_RATING } from '../../const';
-import { Offer } from '../../types/offers';
 import { Review } from '../../types/reviews';
 
 import BookmarksButton from '../../components/bookmarks-button/bookmarks-button';
@@ -13,15 +12,17 @@ import CardsList from '../../components/cards-list/cards-list';
 import Map from '../../components/map/map';
 import PropertyGallery from '../../components/property-gallery/property-gallery';
 import Reviews from '../../components/reviews/reviews';
+import { useAppSelector } from '../../hooks';
 
 type RoomProps = {
-  offers: Offer[];
   reviews: Review[];
 };
 
-function Room({ offers, reviews }: RoomProps): JSX.Element {
+function Room({ reviews }: RoomProps): JSX.Element {
   const params = useParams();
   const { id } = params;
+
+  const offers = useAppSelector((state) => state.offers);
 
   const property = offers.find((currentOffer) => currentOffer.id === Number(id));
 
