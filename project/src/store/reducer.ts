@@ -1,16 +1,20 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { SortingType, START_CITY } from '../const';
+import { AuthorizationStatus, SortingType, START_CITY } from '../const';
 import { Offer } from '../types/offers';
 import { Review } from '../types/reviews';
-import { changeCity, changeSortingType, loadComments, loadOffers, setError, setOffersDataLoadingStatus } from './actions';
+import { UserData } from '../types/user-data';
+import { changeCity, changeSortingType, loadComments, loadFavorites, loadOffers, requireAuthorization, setLoginDataLoadingStatus, setOffersDataLoadingStatus, setUser } from './actions';
 
 type InitialState = {
   city: string;
   offers: Offer[];
   comments: Review[];
   sortingType: SortingType;
-  error: string | null;
   isOffersDataLoading: boolean;
+  isLoginDataLoading: boolean;
+  authorizationStatus: AuthorizationStatus;
+  user: UserData | null;
+  favorites: Offer[];
 }
 
 const initialState: InitialState = {
@@ -18,8 +22,11 @@ const initialState: InitialState = {
   offers: [],
   comments: [],
   sortingType: SortingType.Default,
-  error: null,
-  isOffersDataLoading: false
+  isOffersDataLoading: false,
+  isLoginDataLoading: false,
+  authorizationStatus: AuthorizationStatus.Unknown,
+  user: null,
+  favorites: []
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -38,11 +45,20 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setOffersDataLoadingStatus, (state, action) => {
       state.isOffersDataLoading = action.payload;
     })
+    .addCase(setLoginDataLoadingStatus, (state, action) => {
+      state.isLoginDataLoading = action.payload;
+    })
     .addCase(loadComments, (state, action) => {
       state.comments = action.payload;
     })
-    .addCase(setError, (state, action) => {
-      state.error = action.payload;
+    .addCase(loadFavorites, (state, action) => {
+      state.favorites = action.payload;
+    })
+    .addCase(requireAuthorization, (state, action) => {
+      state.authorizationStatus = action.payload;
+    })
+    .addCase(setUser, (state, action) => {
+      state.user = action.payload;
     });
 });
 
