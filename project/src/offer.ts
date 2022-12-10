@@ -1,8 +1,14 @@
 import { Offer } from './types/offers';
-import { SortingType } from './const';
+import { CITIES, SortingType } from './const';
 
 export const getOffersByCity = (city: string, offers: Offer[]) =>
   offers.filter((offer) => offer.city.name === city);
+
+export const getRandomCity = () => {
+  const index = Math.floor(Math.random() * CITIES.length);
+
+  return CITIES[index];
+};
 
 export const sortByPriceAsc = (offerA: Offer, offerB: Offer) =>
   offerA.price - offerB.price;

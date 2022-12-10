@@ -47,4 +47,7 @@ export enum APIRoute {
   Favorites = '/favorite'
 }
 
-export const TIMEOUT_ERROR = 2000;
+export const SPINNER_SIZES = {
+  small: 15,
+  big: 50
+};

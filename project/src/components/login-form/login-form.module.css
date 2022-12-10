@@ -1,0 +1,10 @@
+.error-text {
+  color: #f54e4e;
+  font-size: small;
+}
+
+.error {
+  border: 1px solid #f54e4e;
+  box-shadow: 1px 1px 2px 0 #f54e4e;
+  outline: none;
+}
