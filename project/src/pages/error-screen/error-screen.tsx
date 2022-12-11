@@ -5,7 +5,9 @@ import styles from './error-screen.module.css';
 function ErrorScreen(): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const handleBtnClick = () => dispatch(fetchOffersAction());
+  const handleBtnClick = (): void => {
+    dispatch(fetchOffersAction());
+  };
 
   return (
     <div className={styles.wrapper}>

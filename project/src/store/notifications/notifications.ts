@@ -15,7 +15,7 @@ export const notifications = createSlice({
   name: NameSpace.Notifications,
   initialState,
   reducers: {
-    pushNotification: (state, action: PayloadAction<Omit<Notification, "id">>) => {
+    pushNotification: (state, action: PayloadAction<Omit<Notification, 'id'>>) => {
       const id = nanoid();
       state.notifications.push({ id, ...action.payload });
     },

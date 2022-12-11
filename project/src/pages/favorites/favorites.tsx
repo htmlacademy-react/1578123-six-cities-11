@@ -16,7 +16,7 @@ function Favorites(): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchFavoritesAction())
+    dispatch(fetchFavoritesAction());
   }, []);
 
   const fetchStatus = useAppSelector(getFavoritesFetchStatus);

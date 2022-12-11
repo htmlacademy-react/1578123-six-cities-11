@@ -1,14 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError, AxiosInstance } from 'axios';
 import { StatusCodes } from 'http-status-codes';
-import { APIRoute, AppRoute, AuthorizationStatus } from '../const';
+import { APIRoute, AppRoute } from '../const';
 import { dropToken, saveToken } from '../services/token';
 import { AuthorizationData } from '../types/authorization-data';
 import { Offer } from '../types/offers';
 import { Review, ReviewData } from '../types/reviews';
 import { AppDispatch, State } from '../types/state';
 import { UserData } from '../types/user-data';
-import { loadOffers, redirectToRoute, requireAuthorization, setLoginDataLoadingStatus, setOffersDataLoadingStatus, setUser } from './actions';
+import { redirectToRoute } from './actions';
 import { pushNotification } from './notifications/notifications';
 
 export const fetchOffersAction = createAsyncThunk<Offer[], undefined, {
@@ -44,14 +44,14 @@ export const fetchCommentsAction = createAsyncThunk<Review[], string, {
 
 });
 
-export const fetchPropertyAction = createAsyncThunk<Offer[], string, {
+export const fetchPropertyAction = createAsyncThunk<Offer, string, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }
 >('data/fetchProperty', async (id, { dispatch, extra: api }) => {
   try {
-    const { data } = await api.get<Offer[]>(`${APIRoute.Hotels}/${id}`);
+    const { data } = await api.get<Offer>(`${APIRoute.Hotels}/${id}`);
 
     return data;
   } catch (err) {

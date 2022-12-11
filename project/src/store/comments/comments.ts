@@ -1,18 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { FetchStatus, NameSpace } from "../../const";
-import { Review } from "../../types/reviews";
-import { fetchCommentsAction, postCommentAction } from "../api-actions";
+import { createSlice } from '@reduxjs/toolkit';
+import { FetchStatus, NameSpace } from '../../const';
+import { Review } from '../../types/reviews';
+import { fetchCommentsAction, postCommentAction } from '../api-actions';
 
 type Comments = {
-    comments: Review[];
-    fetchStatus: FetchStatus;
-    postStatus: FetchStatus;
+  comments: Review[];
+  fetchStatus: FetchStatus;
+  postStatus: FetchStatus;
 };
 
 const initialState: Comments = {
-    comments: [],
-    fetchStatus: FetchStatus.Idle,
-    postStatus: FetchStatus.Idle
+  comments: [],
+  fetchStatus: FetchStatus.Idle,
+  postStatus: FetchStatus.Idle,
 };
 
 export const comments = createSlice({

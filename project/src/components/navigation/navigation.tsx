@@ -30,25 +30,22 @@ function Navigation(): JSX.Element {
               <div
                 className={`header__avatar-wrapper user__avatar-wrapper ${styles.avatarWrapper}`}
                 style={{ backgroundImage: `url(${user.avatarUrl})` }}
-              ></div>
-            ) : (
-              <div className="header__avatar-wrapper user__avatar-wrapper"></div>
-            )}
+              >
+              </div>) : (<div className="header__avatar-wrapper user__avatar-wrapper"></div>)}
             {user && (
               <>
                 <span className="header__user-name user__name">{user.name}</span>
                 <span className="header__favorite-count">{favoritesCount}</span>
-              </>
-            )}
+              </>)}
           </Link>
         </li>
         <li className="header__nav-item">
           <Link
             className="header__nav-link"
-            to={user ? "/" : AppRoute.Login}
+            to={user ? '/' : AppRoute.Login}
             onClick={(evt) => user && handleSignClick(evt)}
           >
-            <span className="header__signout">Sign {user ? "out" : "in"}</span>
+            <span className="header__signout">Sign {user ? 'out' : 'in'}</span>
           </Link>
         </li>
       </ul>

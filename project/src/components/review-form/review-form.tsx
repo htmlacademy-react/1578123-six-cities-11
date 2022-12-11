@@ -2,7 +2,6 @@ import Rating from '../rating/rating';
 import { RatingTitles } from '../../const';
 
 import { ChangeEvent, FormEvent, useState } from 'react';
-import styles from './review-form.module.css';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { selectPostCommentStatus } from '../../store/comments/selectors';
@@ -31,7 +30,7 @@ function ReviewForm(): JSX.Element {
 
   const onSubmit = ([propertyId, commentData]: [string, ReviewData]): void => {
     dispatch(postCommentAction([propertyId, commentData]));
-  }
+  };
 
   const handleFormSubmit = (evt: FormEvent<HTMLFormElement>): void => {
     evt.preventDefault();

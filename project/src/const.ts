@@ -59,11 +59,11 @@ export enum NameSpace {
   Comments = 'COMMENTS',
   Favorites = 'FAVORITES',
   Notifications = 'NOTIFICATIONS'
-};
+}
 
 export enum FetchStatus {
   Idle = 'Idle',
   Pending = 'Pending',
   Success = 'Success',
   Error = 'Error'
-};
+}

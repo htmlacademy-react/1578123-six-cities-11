@@ -123,18 +123,19 @@ function Room(): JSX.Element {
             <Map className="property__map" offers={[...nearPlaces, property]} city={city.location} selectedOffer={property.id} />
           </section>
 
-          { nearPlaces.length && (<div className="container">
-            <section className="near-places places">
-              <h2 className="near-places__title">
-                Other places in the neighbourhood
-              </h2>
-              <CardsList offers={nearPlaces} place='near' />
-            </section>
-          </div>) }
+          {nearPlaces.length && (
+            <div className="container">
+              <section className="near-places places">
+                <h2 className="near-places__title">
+                  Other places in the neighbourhood
+                </h2>
+                <CardsList offers={nearPlaces} place='near' />
+              </section>
+            </div>)}
         </main>
       </Layout>
     </div>
   );
-};
+}
 
 export default Room;
