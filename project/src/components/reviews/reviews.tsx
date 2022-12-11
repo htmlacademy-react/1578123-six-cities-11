@@ -7,7 +7,7 @@ import ReviewList from '../review-list/review-list';
 
 function Reviews(): JSX.Element {
   const reviews = useAppSelector(getComments);
-  const AuthStatus = useAppSelector(getAuthorizationStatus);
+  const authStatus = useAppSelector(getAuthorizationStatus);
 
   return (
     <section className="property__reviews reviews">
@@ -16,7 +16,7 @@ function Reviews(): JSX.Element {
         <span className="reviews__amount">{reviews.length}</span>
       </h2>
       <ReviewList reviews={reviews} />
-      {AuthStatus === AuthorizationStatus.Auth && <ReviewForm />}
+      {authStatus === AuthorizationStatus.Auth && <ReviewForm />}
     </section>
   );
 }

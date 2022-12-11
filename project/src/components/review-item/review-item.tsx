@@ -7,24 +7,24 @@ type ReviewItemProps = {
 };
 
 function ReviewItem({ review }: ReviewItemProps): JSX.Element {
-  const { id, comment, author, date, rating } = review;
+  const { user, rating } = review;
 
-  const commentDate = dayjs(date).format('MMMM YYYY');
+  const commentDate = dayjs(review.date).format('MMMM YYYY');
   const ratingPercentage = (rating * 100) / MAX_RATING;
 
   return (
-    <li className="reviews__item" key={id}>
+    <li className="reviews__item" key={review.id}>
       <div className="reviews__user user">
         <div className="reviews__avatar-wrapper user__avatar-wrapper">
           <img
             className="reviews__avatar user__avatar"
-            src={author.avatarUrl}
+            src={user.avatarUrl}
             width="54"
             height="54"
             alt="Reviews avatar"
           />
         </div>
-        <span className="reviews__user-name">{author.name}</span>
+        <span className="reviews__user-name">{user.name}</span>
       </div>
       <div className="reviews__info">
         <div className="reviews__rating rating">
@@ -33,8 +33,8 @@ function ReviewItem({ review }: ReviewItemProps): JSX.Element {
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <p className="reviews__text">{comment}</p>
-        <time className="reviews__time" dateTime={date}>{commentDate}</time>
+        <p className="reviews__text">{review.comment}</p>
+        <time className="reviews__time" dateTime={review.date}>{commentDate}</time>
       </div>
     </li>
   );
