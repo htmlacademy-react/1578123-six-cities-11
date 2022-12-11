@@ -12,9 +12,8 @@ interface ReduceType {
 }
 
 function FavoritesList({ offers }: FavoritesListProps): JSX.Element {
-  const favoriteOffers = offers.filter((offer) => offer.isFavorite);
 
-  const offersByCity = favoriteOffers.reduce<ReduceType>((total, current) => {
+  const offersByCity = offers.reduce<ReduceType>((total, current) => {
     if (!total[current.city.name]) {
       total[current.city.name] = [];
     }

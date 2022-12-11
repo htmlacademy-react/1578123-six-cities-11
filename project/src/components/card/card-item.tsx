@@ -36,7 +36,7 @@ function CardItem({ offer, onOfferMouseEnter, place }: CardItemProps): JSX.Eleme
   const infoClassName = classsNames('place-card__info', { 'favorites__card-info': place === 'favorite' });
 
   const accomodationType = type.charAt(0).toUpperCase() + type.slice(1),
-    ratingPercentage = (rating * 100) / MAX_RATING;
+    ratingPercentage = (Math.round(rating) * 100) / MAX_RATING;
 
   return (
     <article
