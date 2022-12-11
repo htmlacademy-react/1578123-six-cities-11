@@ -87,7 +87,7 @@ function LoginForm(): JSX.Element {
           <div className="login__input-wrapper form__input-wrapper" key={name}>
             <label className="visually-hidden">{label}</label>
             {error && (
-              <span className={styles['error-text']}> {errorText} </span>
+              <span className={styles.errorText}> {errorText} </span>
             )}
             <input
               className={inputClass}
