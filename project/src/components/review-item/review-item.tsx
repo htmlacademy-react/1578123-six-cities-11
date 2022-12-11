@@ -1,13 +1,16 @@
 import { Review } from '../../types/reviews';
 import dayjs from 'dayjs';
+import { MAX_RATING } from '../../const';
 
 type ReviewItemProps = {
   review: Review;
 };
 
 function ReviewItem({ review }: ReviewItemProps): JSX.Element {
-  const { id, comment, author, date } = review;
+  const { id, comment, author, date, rating } = review;
+
   const commentDate = dayjs(date).format('MMMM YYYY');
+  const ratingPercentage = (rating * 100) / MAX_RATING;
 
   return (
     <li className="reviews__item" key={id}>
@@ -26,7 +29,7 @@ function ReviewItem({ review }: ReviewItemProps): JSX.Element {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{width: '80%'}}></span>
+            <span style={{width: `${ratingPercentage}`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

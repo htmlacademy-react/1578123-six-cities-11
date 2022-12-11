@@ -5,7 +5,7 @@ import LoginForm from '../../components/login-form/login-form';
 import { AppRoute } from '../../const';
 import { useAppDispatch } from '../../hooks';
 import { getRandomCity } from '../../offer';
-import { changeCity } from '../../store/actions';
+import { changeCity } from '../../store/ui/ui';
 
 function Login(): JSX.Element {
   const dispatch = useAppDispatch();

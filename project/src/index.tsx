@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 import { Provider } from 'react-redux';
 
-import { reviews } from './mocks/reviews';
 import { store } from './store';
 import { checkAuthAction, fetchOffersAction } from './store/api-actions';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Notification from './components/notification/notification';
 
 store.dispatch(fetchOffersAction());
 store.dispatch(checkAuthAction());
@@ -21,7 +21,8 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <ToastContainer />
-      <App reviews={reviews} />
+      <Notification />
+      <App />
     </Provider>
   </React.StrictMode>
 );

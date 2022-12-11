@@ -7,6 +7,8 @@ import styles from './login-form.module.css';
 import classNames from 'classnames';
 
 import Spinner from '../spinner/spinner';
+import { getLoginFetchStatus } from '../../store/user/selectors';
+import { FetchStatus } from '../../const';
 
 type FieldProps = {
   value: string;
@@ -43,7 +45,9 @@ function LoginForm(): JSX.Element {
   const [formState, setFormState] = useState<FormStateProps>(initialFormState);
 
   const dispatch = useAppDispatch();
-  const isLoading = useAppSelector((state) => state.isLoginDataLoading);
+
+  const fetchStatus = useAppSelector(getLoginFetchStatus);
+  const isLoading = (fetchStatus === FetchStatus.Pending);
 
   const onSubmit = (authData: AuthorizationData) =>
     dispatch(loginAction(authData));
