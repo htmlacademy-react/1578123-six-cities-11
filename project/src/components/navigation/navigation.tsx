@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { AppRoute, FetchStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
-import { getFavorites, getFavoritesFetchStatus } from '../../store/favorites/selectors';
-import { getOffers } from '../../store/offers/selectors';
+import { getFavoritesFetchStatus } from '../../store/favorites/selectors';
+import { selectFavoritesCount } from '../../store/offers/selectors';
 import { getUser } from '../../store/user/selectors';
 import Spinner from '../spinner/spinner';
 import styles from './navigation.module.css';
@@ -14,9 +14,7 @@ function Navigation(): JSX.Element {
 
   const user = useAppSelector(getUser);
   const fetchStatus = useAppSelector(getFavoritesFetchStatus);
-  const offers = useAppSelector(getOffers);
-  const favoritesCount = offers.filter((offer) => offer.isFavorite).length;
-  //const favoritesCount = useAppSelector(getFavorites).length;
+  const { favoritesCount } = useAppSelector(selectFavoritesCount);
 
   const handleSignClick = (evt: MouseEvent) => {
     evt.preventDefault();

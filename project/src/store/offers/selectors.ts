@@ -13,6 +13,10 @@ export const getPropertyFetchStatus = (state: State): FetchStatus => state[NameS
 
 export const getNearbyOffers = (state: State): Offer[] => state[NameSpace.Offer].nearby;
 
+export const selectFavoritesCount = createSelector([getOffers], (items) => ({
+  favoritesCount: items.filter((item) => item.isFavorite).length,
+}));
+
 export const selectPropertyStatus = createSelector(
   [getPropertyFetchStatus],
   (status) => ({
