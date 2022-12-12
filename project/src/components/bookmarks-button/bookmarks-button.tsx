@@ -1,9 +1,9 @@
-import { useAppDispatch, useAppSelector } from "../../hooks";
-import { selectPostFavoriteStatus } from "../../store/favorites/selectors";
-import { getAuthorizationStatus } from "../../store/user/selectors";
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { selectPostFavoriteStatus } from '../../store/favorites/selectors';
+import { getAuthorizationStatus } from '../../store/user/selectors';
 import classNames from 'classnames';
-import { AppRoute, AuthorizationStatus } from "../../const";
-import { redirectToRoute } from "../../store/actions";
+import { AppRoute, AuthorizationStatus } from '../../const';
+import { redirectToRoute } from '../../store/actions';
 
 type BookmarksButtonProps = {
   isActive: boolean;
@@ -40,11 +40,11 @@ function BookmarksButton({ isActive, size, page, onClick }: BookmarksButtonProps
     }
 
     dispatch(redirectToRoute(AppRoute.Login));
-  }
+  };
 
   return (
-    <button 
-      className={classNames(`${page}__bookmark-button button`, isActive && activeClassName)} 
+    <button
+      className={classNames(`${page}__bookmark-button button`, isActive && activeClassName)}
       type="button"
       onClick={handleClick}
       disabled={isLoading}

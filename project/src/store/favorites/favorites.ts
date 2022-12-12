@@ -36,7 +36,7 @@ export const favorites = createSlice({
       })
       .addCase(postFavoritesAction.fulfilled, (state, action) => {
         state.postStatus = FetchStatus.Success;
-        
+
         if (action.payload.isFavorite) {
           state.favorites.push(action.payload);
         } else {
@@ -48,6 +48,6 @@ export const favorites = createSlice({
       })
       .addCase(logoutAction.fulfilled, (state) => {
         state.favorites = [];
-      });;
+      });
   },
 });

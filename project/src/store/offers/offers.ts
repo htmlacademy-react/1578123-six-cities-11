@@ -66,13 +66,13 @@ export const offers = createSlice({
       .addCase(postFavoritesAction.fulfilled, (state, action) => {
         state.offers.forEach((offer) => {
           if (offer.id === action.payload.id) {
-            offer.isFavorite === action.payload.isFavorite;
+            offer.isFavorite = action.payload.isFavorite;
           }
         });
 
         state.nearby.forEach((offer) => {
           if (offer.id === action.payload.id) {
-            offer.isFavorite === action.payload.isFavorite;
+            offer.isFavorite = action.payload.isFavorite;
           }
         });
 
@@ -88,7 +88,7 @@ export const offers = createSlice({
         state.nearby.forEach((offer) => {
           offer.isFavorite = false;
         });
-        
+
         if( state.property) {
           state.property.isFavorite = false;
         }
