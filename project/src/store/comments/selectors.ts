@@ -1,7 +1,10 @@
 import { createSelector } from '@reduxjs/toolkit';
+import { sortCommentsByDate } from '../../comments';
 import { FetchStatus, NameSpace } from '../../const';
 import { Review } from '../../types/reviews';
 import { State } from '../../types/state';
+
+const MAX_COMMENTS_COUNT = 10;
 
 export const getComments = (state: State): Review[] => state[NameSpace.Comments].comments;
 
@@ -17,3 +20,11 @@ export const selectPostCommentStatus = createSelector(
     isSuccess: status === FetchStatus.Success,
   })
 );
+
+export const selectCommentsCount = createSelector([getComments], (comments) => comments.length);
+
+export const selectSortedComments = createSelector([getComments], (comments) => {
+  const sortedComments = comments.slice().sort(sortCommentsByDate).slice(-MAX_COMMENTS_COUNT);
+
+  return sortedComments;
+});
