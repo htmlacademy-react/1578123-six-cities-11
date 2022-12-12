@@ -37,7 +37,7 @@ function Room(): JSX.Element {
     }
   }, [id, dispatch]);
 
-  const handleFavoriteButtonClick = () => {
+  const handleFavoriteBtnClick = () => {
     dispatch(postFavoritesAction({
       id: Number(id),
       status: Number(!isFavorite)
@@ -81,7 +81,7 @@ function Room(): JSX.Element {
                     isActive={isFavorite}
                     size="big"
                     page="property"
-                    onClick={handleFavoriteButtonClick}
+                    onClick={handleFavoriteBtnClick}
                   />
                 </div>
 

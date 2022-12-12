@@ -4,6 +4,8 @@ import { Offer } from '../../types/offers';
 import BookmarksButton from '../bookmarks-button/bookmarks-button';
 
 import classsNames from 'classnames';
+import { useAppDispatch } from '../../hooks';
+import { postFavoritesAction } from '../../store/api-actions';
 
 type CardItemProps = {
   offer: Offer;
@@ -30,6 +32,8 @@ const classes = {
 };
 
 function CardItem({ offer, onOfferMouseEnter, place }: CardItemProps): JSX.Element {
+  const dispatch = useAppDispatch();
+
   const { className, imgWidth, imgHeight } = classes[place];
   const { id, title, type, price, rating, previewImg, isFavorite, isPremium } = offer;
 
@@ -37,6 +41,10 @@ function CardItem({ offer, onOfferMouseEnter, place }: CardItemProps): JSX.Eleme
 
   const accomodationType = type.charAt(0).toUpperCase() + type.slice(1),
     ratingPercentage = (Math.round(rating) * 100) / MAX_RATING;
+
+  const handleFavoriteBtnClick = (): void => {
+    dispatch(postFavoritesAction({ id, status: Number(!isFavorite) }));
+  };
 
   return (
     <article
@@ -68,9 +76,10 @@ function CardItem({ offer, onOfferMouseEnter, place }: CardItemProps): JSX.Eleme
           </div>
 
           <BookmarksButton
-            isActive={isFavorite ? '__bookmark-button--active' : false}
+            isActive={isFavorite}
             size="small"
             page="place-card"
+            onClick={handleFavoriteBtnClick}
           />
         </div>
         <div className="place-card__rating rating">

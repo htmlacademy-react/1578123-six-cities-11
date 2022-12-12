@@ -1,7 +1,7 @@
 import Rating from '../rating/rating';
 import { RatingTitles } from '../../const';
 
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { selectPostCommentStatus } from '../../store/comments/selectors';
@@ -15,12 +15,22 @@ const commentLength = {
 };
 
 function ReviewForm(): JSX.Element {
+  const dispatch = useAppDispatch();
+
   const { id } = useParams();
   const [formData, setFormData] = useState({ rating: '', comment: '' });
 
-  const dispatch = useAppDispatch();
+  const { isLoading, isSuccess } = useAppSelector(selectPostCommentStatus);
 
-  const { isLoading } = useAppSelector(selectPostCommentStatus);
+  const clearForm = (): void => {
+    setFormData({ rating: '', comment: '' });
+  };
+
+  useEffect(() => {
+    if (isSuccess) {
+      clearForm();
+    }
+  }, [isSuccess]);
 
   const handleFieldChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = evt.target;
@@ -28,18 +38,16 @@ function ReviewForm(): JSX.Element {
     setFormData((prevFormData) => ( {...prevFormData, [name]: value} ));
   };
 
-  const onSubmit = ([propertyId, commentData]: [string, ReviewData]): void => {
-    dispatch(postCommentAction([propertyId, commentData]));
+  const onSubmit = (data: ReviewData): void => {
+    dispatch(postCommentAction(data));
   };
 
   const handleFormSubmit = (evt: FormEvent<HTMLFormElement>): void => {
     evt.preventDefault();
 
     if (id) {
-      onSubmit([id, { rating: Number(formData.rating), comment: formData.comment }]);
+      onSubmit({ id: Number(id), rating: Number(formData.rating), comment: formData.comment });
     }
-
-    setFormData({ rating: '', comment: '' });
   };
 
   const isCommentValid = (formData.comment.length > commentLength.MIN_COMMENT && formData.comment.length < commentLength.MAX_COMMENT);
