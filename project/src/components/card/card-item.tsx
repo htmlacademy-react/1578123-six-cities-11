@@ -1,11 +1,12 @@
 import { generatePath, Link } from 'react-router-dom';
-import { AppRoute, MAX_RATING } from '../../const';
+import { AppRoute } from '../../const';
 import { Offer } from '../../types/offers';
 import BookmarksButton from '../bookmarks-button/bookmarks-button';
 
 import classsNames from 'classnames';
 import { useAppDispatch } from '../../hooks';
 import { postFavoritesAction } from '../../store/api-actions';
+import { getAccomodationType, getRatingPercentage } from '../../utils';
 
 type CardItemProps = {
   offer: Offer;
@@ -39,8 +40,8 @@ function CardItem({ offer, onOfferMouseEnter, place }: CardItemProps): JSX.Eleme
 
   const infoClassName = classsNames('place-card__info', { 'favorites__card-info': place === 'favorite' });
 
-  const accomodationType = type.charAt(0).toUpperCase() + type.slice(1),
-    ratingPercentage = (Math.round(rating) * 100) / MAX_RATING;
+  const accomodationType = getAccomodationType(type);
+  const ratingPercentage = getRatingPercentage(rating);
 
   const handleFavoriteBtnClick = (): void => {
     dispatch(postFavoritesAction({ id, status: Number(!isFavorite) }));

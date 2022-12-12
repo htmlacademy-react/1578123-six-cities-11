@@ -2,8 +2,6 @@ import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
-import { MAX_RATING } from '../../const';
-
 import BookmarksButton from '../../components/bookmarks-button/bookmarks-button';
 import HostInformation from '../../components/host/host';
 import Layout from '../../components/layout/layout';
@@ -16,6 +14,7 @@ import { getNearbyOffers, getProperty, selectPropertyStatus } from '../../store/
 import { fetchCommentsAction, fetchNearbyAction, fetchPropertyAction, postFavoritesAction } from '../../store/api-actions';
 import { FullPageSpinner } from '../../components/fullpage-spinner/fullpage-spinner';
 import ErrorScreen from '../error-screen/error-screen';
+import { getAccomodationType, getRatingPercentage } from '../../utils';
 
 function Room(): JSX.Element {
   const params = useParams();
@@ -54,8 +53,8 @@ function Room(): JSX.Element {
 
   const { title, rating, price, city, goods, host, type, description, bedrooms, images, isFavorite, isPremium, maxAdults } = property;
 
-  const accomodationType = type.charAt(0).toUpperCase() + type.slice(1);
-  const ratingPercentage = (Math.round(rating) * 100) / MAX_RATING;
+  const accomodationType = getAccomodationType(type);
+  const ratingPercentage = getRatingPercentage(rating);
 
   return (
     <div className="page">
