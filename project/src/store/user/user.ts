@@ -21,8 +21,9 @@ export const user = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(checkAuthAction.fulfilled, (state) => {
+      .addCase(checkAuthAction.fulfilled, (state, action) => {
         state.authorizationStatus = AuthorizationStatus.Auth;
+        state.user = action.payload;
         state.fetchStatus = FetchStatus.Success;
       })
       .addCase(checkAuthAction.rejected, (state) => {

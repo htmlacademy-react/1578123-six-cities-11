@@ -5,6 +5,8 @@ import {
   fetchNearbyAction,
   fetchOffersAction,
   fetchPropertyAction,
+  logoutAction,
+  postFavoritesAction,
 } from '../api-actions';
 
 type Offers = {
@@ -60,6 +62,36 @@ export const offers = createSlice({
       })
       .addCase(fetchNearbyAction.rejected, (state) => {
         state.fetchNearbyStatus = FetchStatus.Error;
+      })
+      .addCase(postFavoritesAction.fulfilled, (state, action) => {
+        state.offers.forEach((offer) => {
+          if (offer.id === action.payload.id) {
+            offer.isFavorite === action.payload.isFavorite;
+          }
+        });
+
+        state.nearby.forEach((offer) => {
+          if (offer.id === action.payload.id) {
+            offer.isFavorite === action.payload.isFavorite;
+          }
+        });
+
+        if (state.property?.id === action.payload.id) {
+          state.property.isFavorite = action.payload.isFavorite;
+        }
+      })
+      .addCase(logoutAction.fulfilled, (state) => {
+        state.offers.forEach((offer) => {
+          offer.isFavorite = false;
+        });
+
+        state.nearby.forEach((offer) => {
+          offer.isFavorite = false;
+        });
+        
+        if( state.property) {
+          state.property.isFavorite = false;
+        }
       });
   },
 });

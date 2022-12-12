@@ -13,7 +13,7 @@ import PropertyGallery from '../../components/property-gallery/property-gallery'
 import Reviews from '../../components/reviews/reviews';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { getNearbyOffers, getProperty, selectPropertyStatus } from '../../store/offers/selectors';
-import { fetchCommentsAction, fetchNearbyAction, fetchPropertyAction } from '../../store/api-actions';
+import { fetchCommentsAction, fetchNearbyAction, fetchPropertyAction, postFavoritesAction } from '../../store/api-actions';
 import { FullPageSpinner } from '../../components/fullpage-spinner/fullpage-spinner';
 import ErrorScreen from '../error-screen/error-screen';
 
@@ -36,6 +36,13 @@ function Room(): JSX.Element {
       dispatch(fetchNearbyAction(id));
     }
   }, [id, dispatch]);
+
+  const handleFavoriteButtonClick = () => {
+    dispatch(postFavoritesAction({
+      id: Number(id),
+      status: Number(!isFavorite)
+    }));
+  };
 
   if (isLoading) {
     return <FullPageSpinner size='big' />;
@@ -71,9 +78,10 @@ function Room(): JSX.Element {
                 <div className="property__name-wrapper">
                   <h1 className="property__name">{title}</h1>
                   <BookmarksButton
-                    isActive={isFavorite ? '__bookmark-button--active' : false}
+                    isActive={isFavorite}
                     size="big"
                     page="property"
+                    onClick={handleFavoriteButtonClick}
                   />
                 </div>
 

@@ -1,17 +1,21 @@
 import { MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute, FetchStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
-import { getFavorites } from '../../store/favorites/selectors';
+import { getFavoritesFetchStatus } from '../../store/favorites/selectors';
+import { getOffers } from '../../store/offers/selectors';
 import { getUser } from '../../store/user/selectors';
+import Spinner from '../spinner/spinner';
 import styles from './navigation.module.css';
 
 function Navigation(): JSX.Element {
   const dispatch = useAppDispatch();
 
   const user = useAppSelector(getUser);
-  const favoritesCount = useAppSelector(getFavorites).length;
+  const fetchStatus = useAppSelector(getFavoritesFetchStatus);
+  const offers = useAppSelector(getOffers);
+  const favoritesCount = offers.filter((offer) => offer.isFavorite).length;
 
   const handleSignClick = (evt: MouseEvent) => {
     evt.preventDefault();
@@ -35,7 +39,7 @@ function Navigation(): JSX.Element {
             {user && (
               <>
                 <span className="header__user-name user__name">{user.name}</span>
-                <span className="header__favorite-count">{favoritesCount}</span>
+                <span className="header__favorite-count">{fetchStatus === FetchStatus.Pending ? <Spinner size='small' /> : favoritesCount}</span>
               </>)}
           </Link>
         </li>
