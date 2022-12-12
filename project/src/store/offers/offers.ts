@@ -6,7 +6,7 @@ import {
   fetchOffersAction,
   fetchPropertyAction,
   logoutAction,
-  postFavoritesAction,
+  postFavoritesAction
 } from '../api-actions';
 
 type Offers = {
