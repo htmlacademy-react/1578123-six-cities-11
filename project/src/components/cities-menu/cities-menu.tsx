@@ -1,6 +1,6 @@
 import { CITIES } from '../../const';
 import { useAppDispatch } from '../../hooks';
-import { changeCity } from '../../store/actions';
+import { changeCity } from '../../store/ui/ui';
 import classNames from 'classnames';
 import { SyntheticEvent } from 'react';
 

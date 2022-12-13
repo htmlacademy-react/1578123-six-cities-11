@@ -8,7 +8,7 @@ type FullPageSpinnerProps = {
 
 export function FullPageSpinner({ size }: FullPageSpinnerProps): JSX.Element {
   return (
-    <div className={styles['fp-spinner']}>
+    <div className={styles.fpSpinner}>
       <SpinnerDotted color='#366CB6' size={SPINNER_SIZES[size]} />
     </div>
   );

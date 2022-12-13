@@ -1,11 +1,10 @@
-import { Review } from '../../types/reviews';
+import { useAppSelector } from '../../hooks';
+import { selectSortedComments } from '../../store/comments/selectors';
 import ReviewItem from '../review-item/review-item';
 
-type ReviewListProps = {
-  reviews: Review[];
-};
+function ReviewList(): JSX.Element {
+  const reviews = useAppSelector(selectSortedComments);
 
-function ReviewList({ reviews }: ReviewListProps): JSX.Element {
   return (
     <ul className="reviews__list">
       {reviews.map((review) => (

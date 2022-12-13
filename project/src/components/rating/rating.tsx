@@ -6,9 +6,11 @@ type RatingProps = {
   ) => void;
   rating: string;
   title: string | undefined;
+  currentRating: string;
+  isDisabled: boolean;
 };
 
-function Rating({ handleFieldChange, rating, title }: RatingProps): JSX.Element {
+function Rating({ handleFieldChange, rating, title, currentRating, isDisabled }: RatingProps): JSX.Element {
   return (
     <Fragment>
       <input
@@ -18,6 +20,8 @@ function Rating({ handleFieldChange, rating, title }: RatingProps): JSX.Element 
         id={`${rating}-stars`}
         type="radio"
         onChange={handleFieldChange}
+        checked={currentRating === rating}
+        disabled={isDisabled}
       />
       <label
         htmlFor={`${rating}-stars`}

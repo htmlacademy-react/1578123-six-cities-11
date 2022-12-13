@@ -1,14 +1,20 @@
 import { MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { AppRoute } from '../../const';
+import { AppRoute, FetchStatus } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { logoutAction } from '../../store/api-actions';
+import { getFavoritesFetchStatus } from '../../store/favorites/selectors';
+import { selectFavoritesCount } from '../../store/offers/selectors';
+import { getUser } from '../../store/user/selectors';
+import Spinner from '../spinner/spinner';
+import styles from './navigation.module.css';
 
 function Navigation(): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const user = useAppSelector((state) => state.user);
-  const favoritesCount = useAppSelector((state) => state.favorites.length);
+  const user = useAppSelector(getUser);
+  const fetchStatus = useAppSelector(getFavoritesFetchStatus);
+  const { favoritesCount } = useAppSelector(selectFavoritesCount);
 
   const handleSignClick = (evt: MouseEvent) => {
     evt.preventDefault();
@@ -23,15 +29,17 @@ function Navigation(): JSX.Element {
             className="header__nav-link header__nav-link--profile"
             to={user ? AppRoute.Favorites : AppRoute.Login}
           >
-            <div className="header__avatar-wrapper user__avatar-wrapper"></div>
+            {user ? (
+              <div
+                className={`header__avatar-wrapper user__avatar-wrapper ${styles.avatarWrapper}`}
+                style={{ backgroundImage: `url(${user.avatarUrl})` }}
+              >
+              </div>) : (<div className="header__avatar-wrapper user__avatar-wrapper"></div>)}
             {user && (
               <>
-                <span className="header__user-name user__name">
-                  {user.name}
-                </span>
-                <span className="header__favorite-count">{favoritesCount}</span>
-              </>
-            )}
+                <span className="header__user-name user__name">{user.name}</span>
+                <span className="header__favorite-count">{fetchStatus === FetchStatus.Pending ? <Spinner size='small' /> : favoritesCount}</span>
+              </>)}
           </Link>
         </li>
         <li className="header__nav-item">

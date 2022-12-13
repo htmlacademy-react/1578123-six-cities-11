@@ -1,16 +1,17 @@
 import { useRef, useState } from 'react';
 import { SortingType } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { changeSortingType } from '../../store/actions';
+import { changeSortingType } from '../../store/ui/ui';
 import { useOnClickOutside } from 'usehooks-ts';
 import classNames from 'classnames';
+import { getSortingType } from '../../store/ui/selectors';
 
 function SortingForm(): JSX.Element {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
 
   const dispatch = useAppDispatch();
-  const currentSortingType = useAppSelector((state) => state.sortingType);
+  const currentSortingType = useAppSelector(getSortingType);
 
   const closeOptions = () => setOpen(false);
 

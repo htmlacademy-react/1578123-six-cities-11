@@ -1,7 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { AppRoute, AuthorizationStatus } from '../../const';
-
-import { Review } from '../../types/reviews';
+import { AppRoute, AuthorizationStatus, FetchStatus } from '../../const';
 
 import MainPage from '../../pages/main/main-page';
 import Favorites from '../../pages/favorites/favorites';
@@ -15,17 +13,20 @@ import { useAppSelector } from '../../hooks';
 import { FullPageSpinner } from '../fullpage-spinner/fullpage-spinner';
 import HistoryRouter from '../history-router/history-router';
 import browserHistory from '../../browser-history';
+import { getAuthorizationStatus } from '../../store/user/selectors';
+import { getOffersFetchStatus } from '../../store/offers/selectors';
+import ErrorScreen from '../../pages/error-screen/error-screen';
 
-type AppScreenProps = {
-  reviews: Review[];
-};
+function App(): JSX.Element {
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const offersFetchStatus = useAppSelector(getOffersFetchStatus);
 
-function App({ reviews }: AppScreenProps): JSX.Element {
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
-
-  if (authorizationStatus === AuthorizationStatus.Unknown || isOffersDataLoading) {
+  if (authorizationStatus === AuthorizationStatus.Unknown || offersFetchStatus === FetchStatus.Pending) {
     return <FullPageSpinner size='big' />;
+  }
+
+  if (offersFetchStatus === FetchStatus.Error) {
+    return <ErrorScreen />;
   }
 
   return (
@@ -46,7 +47,7 @@ function App({ reviews }: AppScreenProps): JSX.Element {
                 </PrivateRoute>
               }
             />
-            <Route path={AppRoute.Offer} element={<Room reviews={reviews}/>} />
+            <Route path={AppRoute.Offer} element={<Room />} />
           </Route>
           <Route path={AppRoute.NotFound} element={<PageNotFound />} />
         </Routes>

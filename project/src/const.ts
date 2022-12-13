@@ -51,3 +51,19 @@ export const SPINNER_SIZES = {
   small: 15,
   big: 50
 };
+
+export enum NameSpace {
+  Ui = 'UI',
+  User = 'USER',
+  Offer = 'OFFER',
+  Comments = 'COMMENTS',
+  Favorites = 'FAVORITES',
+  Notifications = 'NOTIFICATIONS'
+}
+
+export enum FetchStatus {
+  Idle = 'Idle',
+  Pending = 'Pending',
+  Success = 'Success',
+  Error = 'Error'
+}

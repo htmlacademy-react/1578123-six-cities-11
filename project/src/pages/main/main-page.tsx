@@ -8,13 +8,20 @@ import SortingForm from '../../components/sorting-form/sorting-form';
 import CardsList from '../../components/cards-list/cards-list';
 import Map from '../../components/map/map';
 import CitiesMenu from '../../components/cities-menu/cities-menu';
+import { getCity, getSortingType } from '../../store/ui/selectors';
+import { getOffers } from '../../store/offers/selectors';
+import MainEmpty from '../main-empty/main-empty';
 
 function MainPage(): JSX.Element {
   const [currentOffer, setActiveOffer] = useState<number | null>(null);
 
-  const currentCity = useAppSelector((state) => state.city);
-  const offers = useAppSelector((state) => state.offers);
-  const sortingType = useAppSelector((state) => state.sortingType);
+  const currentCity = useAppSelector(getCity);
+  const offers = useAppSelector(getOffers);
+  const sortingType = useAppSelector(getSortingType);
+
+  if (!offers.length) {
+    return <MainEmpty currentCity={currentCity} />;
+  }
 
   const offersByCity = getOffersByCity(currentCity, offers);
   const sortedOffers = getSortedOffers(offersByCity, sortingType);
