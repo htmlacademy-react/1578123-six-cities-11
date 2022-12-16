@@ -1,10 +1,10 @@
-import { Host } from './offers';
+import { HostData } from './offers';
 
 export type Review = {
     id: number;
     rating: number;
     comment: string;
-    user: Host;
+    user: HostData;
     date: string;
 };
 

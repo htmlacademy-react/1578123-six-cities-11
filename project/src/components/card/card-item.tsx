@@ -3,7 +3,7 @@ import { AppRoute } from '../../const';
 import { Offer } from '../../types/offers';
 import BookmarksButton from '../bookmarks-button/bookmarks-button';
 
-import classsNames from 'classnames';
+import classNames from 'classnames';
 import { useAppDispatch } from '../../hooks';
 import { postFavoritesAction } from '../../store/api-actions';
 import { getAccomodationType, getRatingPercentage } from '../../utils';
@@ -35,10 +35,10 @@ const classes = {
 function CardItem({ offer, onOfferMouseEnter, place }: CardItemProps): JSX.Element {
   const dispatch = useAppDispatch();
 
+  const { id, title, type, price, rating, previewImage, isFavorite, isPremium } = offer;
   const { className, imgWidth, imgHeight } = classes[place];
-  const { id, title, type, price, rating, previewImg, isFavorite, isPremium } = offer;
 
-  const infoClassName = classsNames('place-card__info', { 'favorites__card-info': place === 'favorite' });
+  const infoClassName = classNames('place-card__info', { 'favorites__card-info': place === 'favorite' });
 
   const accomodationType = getAccomodationType(type);
   const ratingPercentage = getRatingPercentage(rating);
@@ -62,10 +62,11 @@ function CardItem({ offer, onOfferMouseEnter, place }: CardItemProps): JSX.Eleme
         <Link to={generatePath(AppRoute.Offer, { id: String(id)})}>
           <img
             className="place-card__image"
-            src={previewImg}
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            src={previewImage}
             width={imgWidth}
             height={imgHeight}
-            alt="Place image"
+            alt="Place"
           />
         </Link>
       </div>

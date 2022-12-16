@@ -10,8 +10,8 @@ import { postCommentAction } from '../../store/api-actions';
 import Spinner from '../spinner/spinner';
 
 const commentLength = {
-  MIN_COMMENT: 50,
-  MAX_COMMENT: 300
+  MIN: 50,
+  MAX: 300
 };
 
 function ReviewForm(): JSX.Element {
@@ -50,8 +50,8 @@ function ReviewForm(): JSX.Element {
     }
   };
 
-  const isCommentValid = (formData.comment.length > commentLength.MIN_COMMENT && formData.comment.length < commentLength.MAX_COMMENT);
-  const isFormValid = isCommentValid && formData.rating;
+  const isCommentValid = (formData.comment.length >= commentLength.MIN && formData.comment.length < commentLength.MAX);
+  const isDisabled = !(formData.rating && isCommentValid);
 
   return (
     <form className="reviews__form form" action="#" method="post" onSubmit={handleFormSubmit}>
@@ -91,7 +91,7 @@ function ReviewForm(): JSX.Element {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled={!isFormValid && isLoading}
+          disabled={isDisabled || isLoading}
         >
           {isLoading ? <Spinner size='small' /> : 'Submit'}
         </button>
