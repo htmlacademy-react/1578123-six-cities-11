@@ -1,15 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { FetchStatus, NameSpace } from '../../const';
-import { Offer } from '../../types/offers';
+import { FavoritesData } from '../../types/state';
 import { fetchFavoritesAction, logoutAction, postFavoritesAction } from '../api-actions';
 
-type Favorites = {
-  favorites: Offer[];
-  fetchStatus: FetchStatus;
-  postStatus: FetchStatus;
-};
-
-const initialState: Favorites = {
+const initialState: FavoritesData = {
   favorites: [],
   fetchStatus: FetchStatus.Idle,
   postStatus: FetchStatus.Idle
