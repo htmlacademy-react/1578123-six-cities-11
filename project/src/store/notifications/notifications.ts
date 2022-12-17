@@ -2,12 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { nanoid } from 'nanoid';
 import { NameSpace } from '../../const';
 import { Notification } from '../../types/notification';
+import { NotificationData } from '../../types/state';
 
-type NotificationState = {
-  notifications: Notification[];
-};
-
-const initialState: NotificationState = {
+const initialState: NotificationData = {
   notifications: [],
 };
 
