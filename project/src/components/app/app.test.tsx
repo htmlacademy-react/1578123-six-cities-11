@@ -33,6 +33,10 @@ const fakeApp = (
   </Provider>
 );
 
+jest.mock('../../hooks/use-scroll-to-up', () => function useScrollToUp () {
+  return <div>fakeUseScrollToUp</div>;
+});
+
 describe('Application routing', () => {
   it('should render "WelcomeScreen" when user navigate to "/"', () => {
     history.push(AppRoute.Root);
