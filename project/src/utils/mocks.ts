@@ -101,9 +101,10 @@ export const makeFakeOfferFavorite = (): Offer =>
     isPremium: datatype.boolean(),
   } as Offer);
 
-export const makeFakeNotification = (): Notification => ({
+export const makeFakeNotification = (): Notification =>
+  ({
     id: String(datatype.number()),
     type: 'info',
     message: lorem.words(10),
-    duration: datatype.number({ min: 3000, max: 4000 })
-} as Notification);
+    duration: datatype.number({ min: 3000, max: 4000 }),
+  } as Notification);

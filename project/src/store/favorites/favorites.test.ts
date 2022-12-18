@@ -59,7 +59,7 @@ describe('Reducer: favorites', () => {
   describe('postFavoritesAction test', () => {
     it('postFavorites fulfilled', () => {
       let fakeOffers = Array.from({ length: 5 }, () => makeFakeOffer());
-      let fakeNewOffer = makeFakeOffer();
+      const fakeNewOffer = makeFakeOffer();
 
       if (fakeNewOffer.isFavorite) {
         fakeOffers = [...fakeOffers, fakeNewOffer];

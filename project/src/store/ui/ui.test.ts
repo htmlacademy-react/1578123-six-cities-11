@@ -1,17 +1,7 @@
 import { SortingType, START_CITY } from '../../const';
-import { UIData } from '../../types/state';
 import { changeCity, changeSortingType, ui } from './ui';
 
 describe('Reducer: ui', () => {
-  let state: UIData;
-
-  beforeEach(() => {
-    state = {
-      city: START_CITY,
-      sortingType: SortingType.Default,
-    };
-  });
-
   it('Should return initial state without additional parameters', () => {
     expect(ui.reducer(undefined, { type: 'UNKNOWN_ACTION' })).toEqual({
       city: START_CITY,

@@ -1,14 +1,14 @@
-import { FetchStatus } from "../../const";
-import { OffersData } from "../../types/state";
-import { makeFakeOffer } from "../../utils/mocks";
+import { FetchStatus } from '../../const';
+import { OffersData } from '../../types/state';
+import { makeFakeOffer } from '../../utils/mocks';
 import {
   fetchNearbyAction,
   fetchOffersAction,
   fetchPropertyAction,
-} from "../api-actions";
-import { offers } from "./offers";
+} from '../api-actions';
+import { offers } from './offers';
 
-describe("Reducer: offers", () => {
+describe('Reducer: offers', () => {
   let state: OffersData;
 
   beforeEach(() => {
@@ -22,8 +22,8 @@ describe("Reducer: offers", () => {
     };
   });
 
-  it("without additional parameters should return initial state", () => {
-    expect(offers.reducer(undefined, { type: "UNKNOWN_ACTION" })).toEqual({
+  it('without additional parameters should return initial state', () => {
+    expect(offers.reducer(undefined, { type: 'UNKNOWN_ACTION' })).toEqual({
       offers: [],
       property: null,
       nearby: [],
@@ -33,8 +33,8 @@ describe("Reducer: offers", () => {
     });
   });
 
-  describe("fetchOffersAction test", () => {
-    it("fetchOffersAction fulfilled test", () => {
+  describe('fetchOffersAction test', () => {
+    it('fetchOffersAction fulfilled test', () => {
       const fakeOffers = Array.from({ length: 5 }, () => makeFakeOffer());
       expect(
         offers.reducer(state, {
@@ -51,7 +51,7 @@ describe("Reducer: offers", () => {
       });
     });
 
-    it("fetchOffersAction rejected test", () => {
+    it('fetchOffersAction rejected test', () => {
       expect(
         offers.reducer(state, { type: fetchOffersAction.rejected.type })
       ).toEqual({
@@ -65,8 +65,8 @@ describe("Reducer: offers", () => {
     });
   });
 
-  describe("fetchPropertyAction test", () => {
-    it("fetchPropertyAction fulfilled test", () => {
+  describe('fetchPropertyAction test', () => {
+    it('fetchPropertyAction fulfilled test', () => {
       const fakeProperty = makeFakeOffer();
       expect(
         offers.reducer(state, {
@@ -83,7 +83,7 @@ describe("Reducer: offers", () => {
       });
     });
 
-    it("fetchPropertyAction rejected test", () => {
+    it('fetchPropertyAction rejected test', () => {
       expect(
         offers.reducer(state, { type: fetchPropertyAction.rejected.type })
       ).toEqual({
@@ -97,8 +97,8 @@ describe("Reducer: offers", () => {
     });
   });
 
-  describe("fetchNearbyAction test", () => {
-    it("fetchNearbyAction fulfilled test", () => {
+  describe('fetchNearbyAction test', () => {
+    it('fetchNearbyAction fulfilled test', () => {
       const fakeOffers = Array.from({ length: 5 }, () => makeFakeOffer());
       expect(
         offers.reducer(state, {
@@ -115,7 +115,7 @@ describe("Reducer: offers", () => {
       });
     });
 
-    it("fetchNearbyAction rejected test", () => {
+    it('fetchNearbyAction rejected test', () => {
       expect(
         offers.reducer(state, { type: fetchNearbyAction.rejected.type })
       ).toEqual({

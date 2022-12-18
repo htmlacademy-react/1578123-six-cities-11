@@ -1,5 +1,4 @@
 import { datatype } from 'faker';
-import { NotificationData } from '../../types/state';
 import { makeFakeNotification } from '../../utils/mocks';
 import {
   clearNotification,
@@ -8,14 +7,6 @@ import {
 } from './notifications';
 
 describe('Reducer: notifications', () => {
-  let state: NotificationData;
-
-  beforeEach(() => {
-    state = {
-      notifications: [],
-    };
-  });
-
   it('Should return initial state without additional parameters', () => {
     expect(
       notifications.reducer(undefined, { type: 'UNKNOWN_ACTION' })
