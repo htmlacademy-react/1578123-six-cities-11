@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { FetchStatus, NameSpace } from '../../const';
-import { Offer } from '../../types/offers';
+import { OffersData } from '../../types/state';
 import {
   fetchNearbyAction,
   fetchOffersAction,
@@ -9,16 +9,7 @@ import {
   postFavoritesAction
 } from '../api-actions';
 
-type Offers = {
-  offers: Offer[];
-  property: Offer | null;
-  nearby: Offer[];
-  fetchOffersStatus: FetchStatus;
-  fetchPropertyStatus: FetchStatus;
-  fetchNearbyStatus: FetchStatus;
-};
-
-const initialState: Offers = {
+const initialState: OffersData = {
   offers: [],
   property: null,
   nearby: [],

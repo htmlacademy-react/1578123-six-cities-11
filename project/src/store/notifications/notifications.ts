@@ -1,13 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
+import { datatype } from 'faker';
 import { NameSpace } from '../../const';
 import { Notification } from '../../types/notification';
+import { NotificationData } from '../../types/state';
 
-type NotificationState = {
-  notifications: Notification[];
-};
-
-const initialState: NotificationState = {
+const initialState: NotificationData = {
   notifications: [],
 };
 
@@ -16,7 +13,7 @@ export const notifications = createSlice({
   initialState,
   reducers: {
     pushNotification: (state, action: PayloadAction<Omit<Notification, 'id'>>) => {
-      const id = nanoid();
+      const id = String(datatype.number());
       state.notifications.push({ id, ...action.payload });
     },
     clearNotification: (state, action: PayloadAction<string>) => {

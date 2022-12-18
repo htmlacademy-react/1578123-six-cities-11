@@ -1,13 +1,11 @@
-import { Host } from '../../types/offers';
+import { HostData } from '../../types/offers';
 
 type HostProps = {
-  host: Host;
+  host: HostData;
   description: string;
 };
 
-function HostInformation({ host, description }: HostProps): JSX.Element {
-  const { name, isPro, avatarUrl } = host;
-
+function Host({ host, description }: HostProps): JSX.Element {
   return (
     <div className="property__host">
       <h2 className="property__host-title">Meet the host</h2>
@@ -15,14 +13,14 @@ function HostInformation({ host, description }: HostProps): JSX.Element {
         <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
           <img
             className="property__avatar user__avatar"
-            src={avatarUrl}
+            src={host.avatarUrl}
             width="74"
             height="74"
             alt="Host avatar"
           />
         </div>
-        <span className="property__user-name">{name}</span>
-        <span className="property__user-status">{isPro ? 'Pro' : ''}</span>
+        <span className="property__user-name">{host.name}</span>
+        <span className="property__user-status">{host.isPro ? 'Pro' : ''}</span>
       </div>
       <div className="property__description">
         <p className="property__text">{description}</p>
@@ -31,4 +29,4 @@ function HostInformation({ host, description }: HostProps): JSX.Element {
   );
 }
 
-export default HostInformation;
+export default Host;

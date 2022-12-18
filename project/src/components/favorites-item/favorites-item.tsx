@@ -14,7 +14,7 @@ type FavoritesItemProps = {
 function FavoritesItem({ offer }: FavoritesItemProps): JSX.Element {
   const dispatch = useAppDispatch();
 
-  const { id, title, type, price, rating, previewImg, isPremium, isFavorite } = offer;
+  const { id, title, type, price, rating, previewImage, isPremium, isFavorite } = offer;
 
   const accomodationType = getAccomodationType(type);
   const ratingPercentage = getRatingPercentage(rating);
@@ -35,7 +35,7 @@ function FavoritesItem({ offer }: FavoritesItemProps): JSX.Element {
         <Link to={`${AppRoute.Root}${generatePath(AppRoute.Offer, { id: String(id)})}`}>
           <img
             className="place-card__image"
-            src={previewImg}
+            src={previewImage}
             width="150"
             height="110"
             alt="Place image"

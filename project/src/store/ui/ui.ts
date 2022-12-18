@@ -1,12 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { NameSpace, SortingType, START_CITY } from '../../const';
+import { UIData } from '../../types/state';
 
-type UI = {
-  city: string;
-  sortingType: SortingType;
-};
-
-const initialState: UI = {
+const initialState: UIData = {
   city: START_CITY,
   sortingType: SortingType.Default,
 };

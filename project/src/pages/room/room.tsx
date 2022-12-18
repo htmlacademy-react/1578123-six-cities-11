@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import BookmarksButton from '../../components/bookmarks-button/bookmarks-button';
-import HostInformation from '../../components/host/host';
+import Host from '../../components/host/host';
 import Layout from '../../components/layout/layout';
 import CardsList from '../../components/cards-list/cards-list';
 import Map from '../../components/map/map';
@@ -123,7 +123,7 @@ function Room(): JSX.Element {
                     ))}
                   </ul>
                 </div>
-                <HostInformation host={host} description={description} />
+                <Host host={host} description={description} />
                 <Reviews />
               </div>
             </div>
