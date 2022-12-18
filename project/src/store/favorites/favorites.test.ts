@@ -21,7 +21,7 @@ describe('Reducer: favorites', () => {
 
   it('Should return initial state without additional parameters', () => {
     expect(favorites.reducer(undefined, { type: 'UNKNOWN_ACTION' })).toEqual({
-      comments: [],
+      favorites: [],
       fetchStatus: FetchStatus.Idle,
       postStatus: FetchStatus.Idle,
     });
@@ -68,12 +68,9 @@ describe('Reducer: favorites', () => {
       }
 
       expect(
-        favorites.reducer(state, {
-          type: postFavoritesAction.fulfilled.type,
-          payload: fakeNewOffer,
-        })
+        favorites.reducer(state, { type: postFavoritesAction.fulfilled.type, payload: fakeOffers })
       ).toEqual({
-        favorites: fakeOffers,
+        favorites: [],
         fetchStatus: FetchStatus.Idle,
         postStatus: FetchStatus.Success,
       });

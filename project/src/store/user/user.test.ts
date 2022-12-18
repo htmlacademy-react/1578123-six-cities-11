@@ -28,7 +28,7 @@ describe('Reducer: user', () => {
         user.reducer(state, { type: checkAuthAction.fulfilled.type })
       ).toEqual({
         authorizationStatus: AuthorizationStatus.Auth,
-        user: null,
+        user: undefined,
         fetchStatus: FetchStatus.Success,
       });
     });

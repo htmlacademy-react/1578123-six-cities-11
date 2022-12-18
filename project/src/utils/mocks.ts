@@ -1,5 +1,4 @@
 import { datatype, internet, lorem, name } from 'faker';
-import { nanoid } from 'nanoid';
 import { getRandomCity } from '../offer';
 import { Notification } from '../types/notification';
 import { Offer } from '../types/offers';
@@ -103,7 +102,7 @@ export const makeFakeOfferFavorite = (): Offer =>
   } as Offer);
 
 export const makeFakeNotification = (): Notification => ({
-    id: nanoid(),
+    id: String(datatype.number()),
     type: 'info',
     message: lorem.words(10),
     duration: datatype.number({ min: 3000, max: 4000 })

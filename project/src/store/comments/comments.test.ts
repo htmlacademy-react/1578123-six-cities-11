@@ -53,7 +53,7 @@ describe('Reducer: comments', () => {
       expect(
         comments.reducer(state, { type: postCommentAction.fulfilled.type })
       ).toEqual({
-        comments: [],
+        comments: undefined,
         fetchStatus: FetchStatus.Idle,
         postStatus: FetchStatus.Success,
       });

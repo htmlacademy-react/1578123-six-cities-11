@@ -1,4 +1,4 @@
-import { nanoid } from 'nanoid';
+import { datatype } from 'faker';
 import { NotificationData } from '../../types/state';
 import { makeFakeNotification } from '../../utils/mocks';
 import {
@@ -50,7 +50,7 @@ describe('Reducer: notifications', () => {
       const fakeNotifications = Array.from({ length: 5 }, () =>
         makeFakeNotification()
       );
-      const id = nanoid();
+      const id = String(datatype.number());
       const fakeNotificationsAll = fakeNotifications.filter(
         (item) => item.id !== id
       );
